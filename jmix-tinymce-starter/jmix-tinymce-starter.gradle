@@ -1,0 +1,15 @@
+archivesBaseName = 'jmix-tinymce-starter'
+
+jmix {
+    entitiesEnhancing {
+        enabled = false
+    }
+}
+
+dependencies {
+    api project(':jmix-tinymce')
+
+    implementation 'io.jmix.core:jmix-core'
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+}
