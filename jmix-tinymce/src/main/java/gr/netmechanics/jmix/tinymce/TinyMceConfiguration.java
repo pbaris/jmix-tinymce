@@ -1,7 +1,7 @@
 package gr.netmechanics.jmix.tinymce;
 
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
-import gr.netmechanics.jmix.tinymce.xml.layout.loader.TinyMceEditorLoader;
+import gr.netmechanics.jmix.tinymce.loader.TinyMceEditorLoader;
 import io.jmix.core.annotation.JmixModule;
 import io.jmix.flowui.FlowuiConfiguration;
 import io.jmix.flowui.sys.registration.ComponentRegistration;

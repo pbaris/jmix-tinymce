@@ -2,6 +2,6 @@
  * @author Panos Bariamis (pbaris)
  */
 @NonNullApi
-package gr.netmechanics.jmix.tinymce.xml.layout.loader;
+package gr.netmechanics.jmix.tinymce.loader;
 
 import org.springframework.lang.NonNullApi;

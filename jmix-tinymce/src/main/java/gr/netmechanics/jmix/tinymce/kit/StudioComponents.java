@@ -1,4 +1,4 @@
-package gr.netmechanics.jmix.tinymce;
+package gr.netmechanics.jmix.tinymce.kit;
 
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
 import io.jmix.flowui.kit.meta.StudioComponent;
@@ -17,7 +17,9 @@ public interface StudioComponents {
         classFqn = "gr.netmechanics.jmix.tinymce.component.TinyMceEditor",
         category = "Components",
         xmlElement = "tinyMceEditor",
-        icon = "io/jmix/flowui/kit/meta/icon/component/richTextEditor.svg",
+        xmlns = "http://schemas.netmechanics.gr/jmix/ui",
+        xmlnsAlias = "nm",
+        icon = "gr/netmechanics/jmix/tinymce/kit/meta/icon/component/tinymce.svg",
         properties = {
             @StudioProperty(xmlAttribute = "id", type = StudioPropertyType.COMPONENT_ID),
             @StudioProperty(xmlAttribute = "visible", type = StudioPropertyType.BOOLEAN, defaultValue = "true"),
@@ -38,7 +40,6 @@ public interface StudioComponents {
             @StudioProperty(xmlAttribute = "ariaLabel", type = StudioPropertyType.LOCALIZED_STRING),
             @StudioProperty(xmlAttribute = "ariaLabelledBy", type = StudioPropertyType.LOCALIZED_STRING),
             @StudioProperty(xmlAttribute = "classNames", type = StudioPropertyType.VALUES_LIST),
-            @StudioProperty(xmlAttribute = "themeNames", type = StudioPropertyType.VALUES_LIST, options = {"no-border", "compact"}),
             @StudioProperty(xmlAttribute = "label", type = StudioPropertyType.LOCALIZED_STRING),
             @StudioProperty(xmlAttribute = "helperText", type = StudioPropertyType.LOCALIZED_STRING),
             @StudioProperty(xmlAttribute = "dataContainer", type = StudioPropertyType.DATA_CONTAINER_REF),

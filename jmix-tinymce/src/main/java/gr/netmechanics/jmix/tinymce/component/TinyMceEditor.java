@@ -4,7 +4,6 @@ import com.google.common.base.Strings;
 import com.vaadin.flow.component.HasAriaLabel;
 import com.vaadin.flow.component.HasHelper;
 import com.vaadin.flow.component.HasLabel;
-import com.vaadin.flow.component.HasTheme;
 import gr.netmechanics.jmix.tinymce.component.delegate.TinyMceEditorDelegate;
 import io.jmix.flowui.data.SupportsValueSource;
 import io.jmix.flowui.data.ValueSource;
@@ -19,7 +18,7 @@ import org.vaadin.tinymce.TinyMce;
  * @author Panos Bariamis (pbaris)
  */
 public class TinyMceEditor extends TinyMce implements SupportsValueSource<String>, ApplicationContextAware, InitializingBean,
-    HasLabel, HasTheme, HasHelper, HasAriaLabel {
+    HasLabel, HasHelper, HasAriaLabel {
 
     private ApplicationContext applicationContext;
 

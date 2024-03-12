@@ -1,4 +1,4 @@
-package gr.netmechanics.jmix.tinymce.xml.layout.loader;
+package gr.netmechanics.jmix.tinymce.loader;
 
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
 import io.jmix.flowui.xml.layout.loader.AbstractComponentLoader;
@@ -23,7 +23,6 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
         componentLoader().loadLabel(resultComponent, element);
         componentLoader().loadEnabled(resultComponent, element);
         componentLoader().loadClassNames(resultComponent, element);
-        componentLoader().loadThemeNames(resultComponent, element);
         componentLoader().loadSizeAttributes(resultComponent, element);
         componentLoader().loadHelperText(resultComponent, element);
         componentLoader().loadValueAndElementAttributes(resultComponent, element);
