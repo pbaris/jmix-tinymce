@@ -7,6 +7,134 @@
 		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		   xmlns:layout="http://jmix.io/schema/flowui/layout">
 
+	<xs:simpleType name="tinyMceEditorPlugin">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="ADVLIST"/>
+					<xs:enumeration value="ANCHOR"/>
+					<xs:enumeration value="AUTOLINK"/>
+					<xs:enumeration value="AUTORESIZE"/>
+					<xs:enumeration value="AUTOSAVE"/>
+					<xs:enumeration value="CHARMAP"/>
+					<xs:enumeration value="CODE"/>
+					<xs:enumeration value="CODESAMPLE"/>
+					<xs:enumeration value="COLORPICKER"/>
+					<xs:enumeration value="CONTEXTMENU"/>
+					<xs:enumeration value="DIRECTIONALITY"/>
+					<xs:enumeration value="EMOTICONS"/>
+					<xs:enumeration value="FULLPAGE"/>
+					<xs:enumeration value="FULLSCREEN"/>
+					<xs:enumeration value="HELP"/>
+					<xs:enumeration value="HR"/>
+					<xs:enumeration value="IMAGE"/>
+					<xs:enumeration value="IMAGE_TOOLS"/>
+					<xs:enumeration value="IMPORT_CSS"/>
+					<xs:enumeration value="INSERT_DATETIME"/>
+					<xs:enumeration value="LEGACYOUTPUT"/>
+					<xs:enumeration value="LINK"/>
+					<xs:enumeration value="LISTS"/>
+					<xs:enumeration value="MEDIA"/>
+					<xs:enumeration value="NONBREAKING"/>
+					<xs:enumeration value="NONEDITABLE"/>
+					<xs:enumeration value="PAGEBREAK"/>
+					<xs:enumeration value="PASTE"/>
+					<xs:enumeration value="PREVIEW"/>
+					<xs:enumeration value="PRINT"/>
+					<xs:enumeration value="QUICKBARS"/>
+					<xs:enumeration value="SAVE"/>
+					<xs:enumeration value="SEARCH_REPLACE"/>
+					<xs:enumeration value="SPELLCHECKER"/>
+					<xs:enumeration value="TABFOCUS"/>
+					<xs:enumeration value="TABLE"/>
+					<xs:enumeration value="TEMPLATE"/>
+					<xs:enumeration value="TEXT_COLOR"/>
+					<xs:enumeration value="TEXT_PATTERN"/>
+					<xs:enumeration value="VISUAL_BLOCKS"/>
+					<xs:enumeration value="VISUAL_CHARS"/>
+					<xs:enumeration value="WORDCOUNT"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:simpleType name="tinyMceEditorMenubar">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="FILE"/>
+					<xs:enumeration value="EDIT"/>
+					<xs:enumeration value="VIEW"/>
+					<xs:enumeration value="INSERT"/>
+					<xs:enumeration value="FORMAT"/>
+					<xs:enumeration value="TOOLS"/>
+					<xs:enumeration value="TABLE"/>
+					<xs:enumeration value="HELP"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:simpleType name="tinyMceEditorToolbar">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="SEPARATOR"/>
+					<xs:enumeration value="UNDO"/>
+					<xs:enumeration value="REDO"/>
+					<xs:enumeration value="FORMAT_SELECT"/>
+					<xs:enumeration value="BLOCKS"/>
+					<xs:enumeration value="BOLD"/>
+					<xs:enumeration value="ITALIC"/>
+					<xs:enumeration value="UNDERLINE"/>
+					<xs:enumeration value="STRIKETHROUGH"/>
+					<xs:enumeration value="FORECOLOR"/>
+					<xs:enumeration value="BACKCOLOR"/>
+					<xs:enumeration value="ALIGN_LEFT"/>
+					<xs:enumeration value="ALIGN_CENTER"/>
+					<xs:enumeration value="ALIGN_RIGHT"/>
+					<xs:enumeration value="ALIGN_JUSTIFY"/>
+					<xs:enumeration value="FONTNAME"/>
+					<xs:enumeration value="FONTSIZE"/>
+					<xs:enumeration value="BLOCKQUOTE"/>
+					<xs:enumeration value="NUMLIST"/>
+					<xs:enumeration value="BULLIST"/>
+					<xs:enumeration value="OUTDENT"/>
+					<xs:enumeration value="INDENT"/>
+					<xs:enumeration value="REMOVE_FORMAT"/>
+					<xs:enumeration value="HELP"/>
+					<xs:enumeration value="TABLE"/>
+					<xs:enumeration value="TABLE_DELETE"/>
+					<xs:enumeration value="TABLE_PROPS"/>
+					<xs:enumeration value="TABLE_ROWPROPS"/>
+					<xs:enumeration value="TABLE_CELLPROPS"/>
+					<xs:enumeration value="TABLE_INSERT_ROW_BEFORE"/>
+					<xs:enumeration value="TABLE_INSERT_ROW_AFTER"/>
+					<xs:enumeration value="TABLE_DELETE_ROW"/>
+					<xs:enumeration value="TABLE_INSERT_COL_BEFORE"/>
+					<xs:enumeration value="TABLE_INSERT_COL_AFTER"/>
+					<xs:enumeration value="FONTSELECT"/>
+					<xs:enumeration value="FONTSIZESELECT"/>
+					<xs:enumeration value="EMOTICONS"/>
+					<xs:enumeration value="LINK"/>
+					<xs:enumeration value="IMAGE"/>
+					<xs:enumeration value="MEDIA"/>
+					<xs:enumeration value="PRINT"/>
+					<xs:enumeration value="INSERT_DATETIME"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
 	<xs:element name="tinyMceEditor">
 		<xs:complexType>
 			<xs:complexContent>
@@ -19,6 +147,11 @@
 					<xs:attributeGroup ref="layout:hasHelperText"/>
 					<xs:attributeGroup ref="layout:hasValueAndElement"/>
 					<xs:attributeGroup ref="layout:hasAriaLabel"/>
+
+					<xs:attribute name="useBasicConfig" type="xs:boolean"/>
+					<xs:attribute name="plugins" type="tinyMceEditorPlugin"/>
+					<xs:attribute name="menubar" type="tinyMceEditorMenubar"/>
+					<xs:attribute name="toolbar" type="tinyMceEditorToolbar"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
