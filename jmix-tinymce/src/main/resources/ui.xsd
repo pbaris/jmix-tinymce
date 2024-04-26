@@ -148,7 +148,6 @@
 					<xs:attributeGroup ref="layout:hasValueAndElement"/>
 					<xs:attributeGroup ref="layout:hasAriaLabel"/>
 
-					<xs:attribute name="useBasicConfig" type="xs:boolean"/>
 					<xs:attribute name="plugins" type="tinyMceEditorPlugin"/>
 					<xs:attribute name="menubar" type="tinyMceEditorMenubar"/>
 					<xs:attribute name="toolbar" type="tinyMceEditorToolbar"/>

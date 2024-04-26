@@ -3,12 +3,12 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "io.jmix.gradle:jmix-gradle-plugin:2.2.0.1"
+        classpath 'io.jmix.gradle:jmix-gradle-plugin:2.2.1.1'
     }
 }
 
 group = 'gr.netmechanics.jmix'
-version = '0.0.11-SNAPSHOT'
+version = '0.0.20-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java-library'
@@ -23,7 +23,7 @@ subprojects {
     }
 
     jmix {
-        bomVersion = '2.2.0'
+        bomVersion = '2.2.1'
         projectId = 'tinymce'
     }
 

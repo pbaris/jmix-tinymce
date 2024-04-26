@@ -1,13 +1,15 @@
 package gr.netmechanics.jmix.tinymce.loader;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
 import io.jmix.flowui.xml.layout.loader.AbstractComponentLoader;
 import io.jmix.flowui.xml.layout.support.DataLoaderSupport;
+import org.apache.commons.lang3.StringUtils;
 import org.vaadin.tinymce.Menubar;
 import org.vaadin.tinymce.Plugin;
 import org.vaadin.tinymce.Toolbar;
@@ -28,11 +30,11 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
     public void loadComponent() {
         getDataLoaderSupport().loadData(resultComponent, element);
 
-        boolean useBasicConfig = loadBoolean(element, "useBasicConfig").orElse(false);
+        resultComponent.configure("branding", false);
 
-        resultComponent.configurePlugin(useBasicConfig, loadConfig(Plugin.class, "plugins"));
-        resultComponent.configureMenubar(useBasicConfig, loadConfig(Menubar.class, "menubar"));
-        resultComponent.configureToolbar(useBasicConfig, loadConfig(Toolbar.class, "toolbar"));
+        loadConfig(Plugin.class, "plugins", false, it -> it.pluginLabel);
+        loadConfig(Menubar.class, "menubar", true, it -> it.menubarLabel);
+        loadConfig(Toolbar.class, "toolbar", true, it -> it.toolbarLabel);
 
         componentLoader().loadLabel(resultComponent, element);
         componentLoader().loadEnabled(resultComponent, element);
@@ -50,14 +52,21 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
         return dataLoaderSupport;
     }
 
-    @SuppressWarnings("unchecked")
-    private <E extends Enum<E>> E[] loadConfig(final Class<E> type, final String attributeName) {
-        return loaderSupport.loadString(element, attributeName).map(valuesString -> {
-            List<String> values = split(valuesString);
-            return values.stream()
-                .map(v -> Enum.valueOf(type, v))
-                .toArray(v -> (E[]) Array.newInstance(type, values.size()));
-        }).orElseGet(() -> (E[]) Array.newInstance(type, 0));
+    private <E extends Enum<E>> void loadConfig(final Class<E> type, final String attribute,
+                                                final boolean supportsDisable, final Function<E, String> convert) {
+
+        String config = loaderSupport.loadString(element, attribute)
+            .map(valuesString -> split(valuesString).stream()
+                .map(v -> convert.apply(Enum.valueOf(type, v)))
+                .collect(Collectors.joining(" ")))
+            .orElse(null);
+
+        if (StringUtils.isNotBlank(config)) {
+            resultComponent.configure(attribute, config);
+
+        } else if (supportsDisable) {
+            resultComponent.configure(attribute, false);
+        }
     }
 
     private List<String> split(String names) {

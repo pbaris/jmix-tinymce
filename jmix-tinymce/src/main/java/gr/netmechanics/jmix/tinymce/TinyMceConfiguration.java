@@ -38,7 +38,7 @@ public class TinyMceConfiguration {
 //    }
 
     @Bean
-    public ComponentRegistration searchField() {
+    public ComponentRegistration tinyMceEditor() {
         return ComponentRegistrationBuilder.create(TinyMceEditor.class)
             .withComponentLoader("tinyMceEditor", TinyMceEditorLoader.class)
             .build();
