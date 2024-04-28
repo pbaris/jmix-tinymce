@@ -1,55 +1,48 @@
 package gr.netmechanics.jmix.tinymce.component;
 
-import org.vaadin.tinymce.Plugin;
+/**
+ * @author Panos Bariamis (pbaris)
+ */
+public enum TinyMcePlugin implements TinyMceEnum {
+    ACCORDION("accordion"),
+    ADVANCED_LIST("advlist"),
+    ANCHOR("anchor"),
+    AUTOLINK("autolink"),
+    AUTORESIZE("autoresize"),
+    AUTOSAVE("autosave"),
+    CHARACTER_MAP("charmap"),
+    CODE("code"),
+    CODE_SAMPLE("codesample"),
+    DIRECTIONALITY("directionality"),
+    EMOTICONS("emoticons"),
+    FULLSCREEN("fullscreen"),
+    HELP("help"),
+    IMAGE("image"),
+    IMPORT_CSS("importcss"),
+    INSERT_DATETIME("insertdatetime"),
+    LINK("link"),
+    LISTS("lists"),
+    MEDIA("media"),
+    NON_BREAKING("nonbreaking"),
+    PAGE_BREAK("pagebreak"),
+    PREVIEW("preview"),
+    QUICK_BARS("quickbars"),
+    SAVE("save"),
+    SEARCH_REPLACE("searchreplace"),
+    TABLE("table"),
+    TEMPLATE("template"),
+    VISUAL_BLOCKS("visualblocks"),
+    VISUAL_CHARACTERS("visualchars"),
+    WORD_COUNT("wordcount");
 
-public enum TinyMcePlugin {
-    ADVLIST(Plugin.ADVLIST),
-    ANCHOR(Plugin.ANCHOR),
-    AUTOLINK(Plugin.AUTOLINK),
-    AUTORESIZE(Plugin.AUTORESIZE),
-    AUTOSAVE(Plugin.AUTOSAVE),
-    CHARMAP(Plugin.CHARMAP),
-    CODE(Plugin.CODE),
-    CODESAMPLE(Plugin.CODESAMPLE),
-    COLORPICKER(Plugin.COLORPICKER),
-    CONTEXTMENU(Plugin.CONTEXTMENU),
-    DIRECTIONALITY(Plugin.DIRECTIONALITY),
-    EMOTICONS(Plugin.EMOTICONS),
-    FULLPAGE(Plugin.FULLPAGE),
-    FULLSCREEN(Plugin.FULLSCREEN),
-    HELP(Plugin.HELP),
-    HR(Plugin.HR),
-    IMAGE(Plugin.IMAGE),
-    IMAGE_TOOLS(Plugin.IMAGE_TOOLS),
-    IMPORT_CSS(Plugin.IMPORT_CSS),
-    INSERT_DATETIME(Plugin.INSERT_DATETIME),
-    LEGACYOUTPUT(Plugin.LEGACYOUTPUT),
-    LINK(Plugin.LINK),
-    LISTS(Plugin.LISTS),
-    MEDIA(Plugin.MEDIA),
-    NONBREAKING(Plugin.NONBREAKING),
-    NONEDITABLE(Plugin.NONEDITABLE),
-    PAGEBREAK(Plugin.PAGEBREAK),
-    PASTE(Plugin.PASTE),
-    PREVIEW(Plugin.PREVIEW),
-    PRINT(Plugin.PRINT),
-    QUICKBARS(Plugin.QUICKBARS),
-    SAVE(Plugin.SAVE),
-    SEARCH_REPLACE(Plugin.SEARCH_REPLACE),
-    SPELLCHECKER(Plugin.SPELLCHECKER),
-    TABFOCUS(Plugin.TABFOCUS),
-    TABLE(Plugin.TABLE),
-    TEMPLATE(Plugin.TEMPLATE),
-    TEXT_COLOR(Plugin.TEXT_COLOR),
-    TEXT_PATTERN(Plugin.TEXT_PATTERN),
-    VISUAL_BLOCKS(Plugin.VISUAL_BLOCKS),
-    VISUAL_CHARS(Plugin.VISUAL_CHARS),
-    WORDCOUNT(Plugin.WORDCOUNT);
+    public final String jsName;
 
-    public final Plugin plugin;
-
-    TinyMcePlugin(Plugin plugin) {
-        this.plugin = plugin;
+    TinyMcePlugin(String jsName) {
+        this.jsName = jsName;
     }
 
+    @Override
+    public String getJsName() {
+        return jsName;
+    }
 }

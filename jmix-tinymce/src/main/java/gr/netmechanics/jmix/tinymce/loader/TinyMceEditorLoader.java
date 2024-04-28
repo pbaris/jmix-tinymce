@@ -1,18 +1,26 @@
 package gr.netmechanics.jmix.tinymce.loader;
 
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_TOOLBAR;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
+import gr.netmechanics.jmix.tinymce.component.TinyMceButton;
+import gr.netmechanics.jmix.tinymce.component.TinyMceConfigMode;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
+import gr.netmechanics.jmix.tinymce.component.TinyMceEnum;
+import gr.netmechanics.jmix.tinymce.component.TinyMceMenu;
+import gr.netmechanics.jmix.tinymce.component.TinyMcePlugin;
 import io.jmix.flowui.xml.layout.loader.AbstractComponentLoader;
 import io.jmix.flowui.xml.layout.support.DataLoaderSupport;
 import org.apache.commons.lang3.StringUtils;
-import org.vaadin.tinymce.Menubar;
-import org.vaadin.tinymce.Plugin;
-import org.vaadin.tinymce.Toolbar;
+import org.springframework.lang.NonNull;
 
 /**
  * @author Panos Bariamis (pbaris)
@@ -22,6 +30,7 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
     protected DataLoaderSupport dataLoaderSupport;
 
     @Override
+    @NonNull
     protected TinyMceEditor createComponent() {
         return factory.create(TinyMceEditor.class);
     }
@@ -31,10 +40,7 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
         getDataLoaderSupport().loadData(resultComponent, element);
 
         resultComponent.configure("branding", false);
-
-        loadConfig(Plugin.class, "plugins", false, it -> it.pluginLabel);
-        loadConfig(Menubar.class, "menubar", true, it -> it.menubarLabel);
-        loadConfig(Toolbar.class, "toolbar", true, it -> it.toolbarLabel);
+        loadTinyMceBars();
 
         componentLoader().loadLabel(resultComponent, element);
         componentLoader().loadEnabled(resultComponent, element);
@@ -52,14 +58,76 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
         return dataLoaderSupport;
     }
 
-    private <E extends Enum<E>> void loadConfig(final Class<E> type, final String attribute,
-                                                final boolean supportsDisable, final Function<E, String> convert) {
-
-        String config = loaderSupport.loadString(element, attribute)
-            .map(valuesString -> split(valuesString).stream()
-                .map(v -> convert.apply(Enum.valueOf(type, v)))
-                .collect(Collectors.joining(" ")))
+    private void loadTinyMceBars() {
+        TinyMceConfigMode configMode = loaderSupport.loadString(element, "configMode")
+            .map(TinyMceConfigMode::valueOf)
             .orElse(null);
+
+        List<TinyMceMenu> viewMenubar = loadConfig(TinyMceMenu.class, "menubar");
+        List<TinyMceButton> viewToolbar = loadConfig(TinyMceButton.class, "toolbar");
+        List<TinyMcePlugin> viewPlugins = loadConfig(TinyMcePlugin.class, "plugins");
+
+        if (configMode != null) {
+            var menubar = new ArrayList<>(configMode.getMenubar());
+            viewMenubar.stream().filter(it -> !menubar.contains(it)).forEach(menubar::add);
+            applyConfig(menubar, "menubar", true);
+
+            var toolbar = new ArrayList<>(configMode.getToolbar());
+            viewToolbar.stream().filter(it -> !toolbar.contains(it)).forEach(toolbar::add);
+            applyToolbarConfig(toolbar);
+
+            var plugins = new HashSet<>(configMode.getPlugins());
+            plugins.addAll(viewPlugins);
+            applyConfig(plugins, "plugins", false);
+
+        } else {
+            applyConfig(viewMenubar, "menubar", true);
+            applyToolbarConfig(viewToolbar);
+            applyConfig(viewPlugins, "plugins", false);
+        }
+    }
+
+    private <E extends Enum<E> & TinyMceEnum> List<E> loadConfig(final Class<E> type, final String attribute) {
+        return loaderSupport.loadString(element, attribute)
+            .map(valuesString -> split(valuesString).stream()
+                .map(v -> {
+                    boolean isBtn = TinyMceButton.class.isAssignableFrom(type);
+                    String enumValue;
+                    if (isBtn && "|".equals(v)) {
+                        enumValue = "SEPARATOR";
+
+                    } else if (isBtn && "+".equals(v)) {
+                        enumValue = "NEW_TOOLBAR";
+
+                    } else {
+                        enumValue = v;
+                    }
+                    return Enum.valueOf(type, enumValue);
+                })
+                .toList())
+            .orElse(Collections.emptyList());
+    }
+
+    private void applyToolbarConfig(final List<TinyMceButton> toolbar) {
+        if (!toolbar.contains(NEW_TOOLBAR)) {
+            applyConfig(toolbar, "toolbar", true);
+            return;
+        }
+
+        String[] toolbars = toolbar.stream()
+            .map(TinyMceEnum::getJsName)
+            .collect(Collectors.joining(" ")).split("\\++");
+
+        resultComponent.configure("toolbar", Arrays.stream(toolbars)
+            .filter(tb -> !Strings.isNullOrEmpty(tb))
+            .map(String::trim)
+            .toArray(String[]::new));
+    }
+
+    private <E extends TinyMceEnum> void applyConfig(final Collection<E> configs, final String attribute, final boolean supportsDisable) {
+        final String config = configs.stream()
+            .map(TinyMceEnum::getJsName)
+            .collect(Collectors.joining(" "));
 
         if (StringUtils.isNotBlank(config)) {
             resultComponent.configure(attribute, config);
