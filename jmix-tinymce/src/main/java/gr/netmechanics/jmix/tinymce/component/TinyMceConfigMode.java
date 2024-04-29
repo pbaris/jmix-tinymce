@@ -7,43 +7,56 @@ import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ALIGN_RIGHT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.BACKCOLOR;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.BOLD;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.BULLETS_LIST;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.CHARACTER_MAP;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.CODE;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.COPY;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.CUT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.FORECOLOR;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.FULLSCREEN;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.HR;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.INDENT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ITALIC;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.LINK;
-import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_DOCUMENT;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.MEDIA;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NUMBERS_LIST;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.OUTDENT;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.PASTE;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.PASTE_TEXT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.REDO;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.REMOVE_FORMAT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.SEPARATOR;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.SUBSCRIPT;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.SUPERSCRIPT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.TABLE;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.UNDERLINE;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.UNDO;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.UNLINK;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.VISUAL_BLOCKS;
 import static java.util.Collections.emptyList;
-import static java.util.Collections.emptySet;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Panos Bariamis (pbaris)
  */
 
-//TODO credits, readme, advanced
+//TODO github, load plugins based on menubar also
 public enum TinyMceConfigMode {
-    BASIC(
-        emptyList(),
-        List.of(
-            UNDO, REDO, SEPARATOR,
-            BOLD, ITALIC, UNDERLINE, SEPARATOR,
-            FORECOLOR, BACKCOLOR, SEPARATOR, 
-            ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, INDENT, OUTDENT, SEPARATOR,
-            NUMBERS_LIST, BULLETS_LIST, LINK, TABLE, SEPARATOR,
-            FULLSCREEN, CODE)),
+    BASIC(emptyList(), List.of(
+        UNDO, REDO, SEPARATOR,
+        BOLD, ITALIC, UNDERLINE, SEPARATOR,
+        ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, SEPARATOR,
+        FORECOLOR, BACKCOLOR, SEPARATOR,
+        NUMBERS_LIST, BULLETS_LIST, INDENT, OUTDENT, SEPARATOR,
+        LINK, TABLE, FULLSCREEN, CODE)),
 
-    ADVANCED(emptyList(), emptyList());
+    ADVANCED(emptyList(), List.of(
+        UNDO, REDO, CUT, COPY, PASTE, PASTE_TEXT, SEPARATOR,
+        BOLD, ITALIC, UNDERLINE, SUBSCRIPT, SUPERSCRIPT, SEPARATOR,
+        ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, SEPARATOR,
+        FORECOLOR, BACKCOLOR, SEPARATOR,
+        NUMBERS_LIST, BULLETS_LIST, INDENT, OUTDENT, SEPARATOR,
+        LINK, UNLINK, TABLE, MEDIA, HR, CHARACTER_MAP, VISUAL_BLOCKS, REMOVE_FORMAT, FULLSCREEN, CODE));
 
     private final List<TinyMceMenu> menubar;
     private final List<TinyMceButton> toolbar;

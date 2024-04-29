@@ -1,0 +1,10 @@
+<credits xmlns="http://jmix.io/schema/core/credits">
+	<items>
+		<item name="TinyMCE for Flow" url="https://github.com/parttio/tinymce-for-flow">
+			<license ref="apache-2.0" />
+		</item>
+		<item name="TinyMCE" url="https://github.com/tinymce/tinymce/tree/release/6.6">
+			<license name="MIT License" url="https://github.com/tinymce/tinymce/blob/release%2F6.6/LICENSE.TXT" />
+		</item>
+	</items>
+</credits>
