@@ -1,6 +1,7 @@
-package gr.netmechanics.jmix.tinymce.component.delegate;
+package gr.netmechanics.jmix.tinymce.component;
 
-import com.vaadin.flow.component.AbstractCompositeField;
+import com.vaadin.flow.component.AbstractField;
+import io.jmix.flowui.component.delegate.AbstractFieldDelegate;
 import io.jmix.flowui.data.ValueSource;
 import io.jmix.flowui.data.binding.impl.AbstractValueBinding;
 import io.jmix.flowui.data.binding.impl.FieldValueBinding;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("flowui_TinyMceEditorDelegate")
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class TinyMceEditorDelegate<C extends AbstractCompositeField<?, ?, String>, V> extends AbstractCompositeFieldDelegate<C, V, String> {
+public class TinyMceEditorDelegate<C extends AbstractField<?, String>, V> extends AbstractFieldDelegate<C, V, String> {
 
     public TinyMceEditorDelegate(C component) {
         super(component);

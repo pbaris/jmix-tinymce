@@ -8,7 +8,7 @@ buildscript {
 }
 
 group = 'gr.netmechanics.jmix'
-version = '0.0.26-SNAPSHOT'
+version = '0.0.37'
 
 subprojects {
     apply plugin: 'java-library'

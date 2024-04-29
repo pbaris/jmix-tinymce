@@ -1,5 +1,10 @@
 package gr.netmechanics.jmix.tinymce.component;
 
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ACCORDION_REMOVE;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ACCORDION_TOGGLE;
+
+import java.util.Set;
+
 /**
  * @author Panos Bariamis (pbaris)
  */

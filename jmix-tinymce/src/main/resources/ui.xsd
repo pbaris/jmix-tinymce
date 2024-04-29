@@ -7,48 +7,6 @@
 		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		   xmlns:layout="http://jmix.io/schema/flowui/layout">
 
-	<xs:simpleType name="tinyMcePlugin">
-		<xs:union>
-			<xs:simpleType>
-				<xs:restriction base="xs:string"/>
-			</xs:simpleType>
-			<xs:simpleType>
-				<xs:restriction base="xs:string">
-					<xs:enumeration value="ACCORDION"/>
-					<xs:enumeration value="ADVANCED_LIST"/>
-					<xs:enumeration value="ANCHOR"/>
-					<xs:enumeration value="AUTOLINK"/>
-					<xs:enumeration value="AUTORESIZE"/>
-					<xs:enumeration value="AUTOSAVE"/>
-					<xs:enumeration value="CHARACTER_MAP"/>
-					<xs:enumeration value="CODE"/>
-					<xs:enumeration value="CODE_SAMPLE"/>
-					<xs:enumeration value="DIRECTIONALITY"/>
-					<xs:enumeration value="EMOTICONS"/>
-					<xs:enumeration value="FULLSCREEN"/>
-					<xs:enumeration value="HELP"/>
-					<xs:enumeration value="IMAGE"/>
-					<xs:enumeration value="IMPORT_CSS"/>
-					<xs:enumeration value="INSERT_DATETIME"/>
-					<xs:enumeration value="LINK"/>
-					<xs:enumeration value="LISTS"/>
-					<xs:enumeration value="MEDIA"/>
-					<xs:enumeration value="NON_BREAKING"/>
-					<xs:enumeration value="PAGE_BREAK"/>
-					<xs:enumeration value="PREVIEW"/>
-					<xs:enumeration value="QUICK_BARS"/>
-					<xs:enumeration value="SAVE"/>
-					<xs:enumeration value="SEARCH_REPLACE"/>
-					<xs:enumeration value="TABLE"/>
-					<xs:enumeration value="TEMPLATE"/>
-					<xs:enumeration value="VISUAL_BLOCKS"/>
-					<xs:enumeration value="VISUAL_CHARACTERS"/>
-					<xs:enumeration value="WORD_COUNT"/>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:union>
-	</xs:simpleType>
-
 	<xs:simpleType name="tinyMceMenu">
 		<xs:union>
 			<xs:simpleType>
@@ -76,7 +34,11 @@
 			</xs:simpleType>
 			<xs:simpleType>
 				<xs:restriction base="xs:string">
+					<xs:enumeration value="+"/>
+					<xs:enumeration value="|"/>
 					<xs:enumeration value="ACCORDION"/>
+					<xs:enumeration value="ACCORDION_TOGGLE"/>
+					<xs:enumeration value="ACCORDION_REMOVE"/>
 					<xs:enumeration value="ALIGN_CENTER"/>
 					<xs:enumeration value="ALIGN_JUSTIFY"/>
 					<xs:enumeration value="ALIGN_LEFT"/>
@@ -118,8 +80,6 @@
 					<xs:enumeration value="LTR"/>
 					<xs:enumeration value="MEDIA"/>
 					<xs:enumeration value="NEW_DOCUMENT"/>
-					<xs:enumeration value="NEW_TOOLBAR"/>
-					<xs:enumeration value="+"/>
 					<xs:enumeration value="NON_BREAKING"/>
 					<xs:enumeration value="NUMBERS_LIST"/>
 					<xs:enumeration value="OPEN_LINK"/>
@@ -139,8 +99,6 @@
 					<xs:enumeration value="SAVE"/>
 					<xs:enumeration value="SELECT_ALL"/>
 					<xs:enumeration value="SEARCH_REPLACE"/>
-					<xs:enumeration value="SEPARATOR"/>
-					<xs:enumeration value="|"/>
 					<xs:enumeration value="RTL"/>
 					<xs:enumeration value="STRIKETHROUGH"/>
 					<xs:enumeration value="STYLES"/>
@@ -208,7 +166,6 @@
 					<xs:attributeGroup ref="layout:hasAriaLabel"/>
 
 					<xs:attribute name="configMode" type="tinyMceConfigMode"/>
-					<xs:attribute name="plugins" type="tinyMcePlugin"/>
 					<xs:attribute name="menubar" type="tinyMceMenu"/>
 					<xs:attribute name="toolbar" type="tinyMceButton"/>
 				</xs:extension>

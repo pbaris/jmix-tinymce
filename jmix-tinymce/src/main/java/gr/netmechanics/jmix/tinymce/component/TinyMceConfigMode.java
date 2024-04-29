@@ -16,9 +16,11 @@ import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.LINK;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_DOCUMENT;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NUMBERS_LIST;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.OUTDENT;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.REDO;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.SEPARATOR;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.TABLE;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.UNDERLINE;
+import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.UNDO;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptySet;
 
@@ -28,28 +30,27 @@ import java.util.Set;
 /**
  * @author Panos Bariamis (pbaris)
  */
+
+//TODO credits, readme, advanced
 public enum TinyMceConfigMode {
     BASIC(
         emptyList(),
         List.of(
-            NEW_DOCUMENT, SEPARATOR,
+            UNDO, REDO, SEPARATOR,
             BOLD, ITALIC, UNDERLINE, SEPARATOR,
             FORECOLOR, BACKCOLOR, SEPARATOR, 
             ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, INDENT, OUTDENT, SEPARATOR,
             NUMBERS_LIST, BULLETS_LIST, LINK, TABLE, SEPARATOR,
-            FULLSCREEN, CODE),
-        Set.of(TinyMcePlugin.LINK, TinyMcePlugin.LISTS, TinyMcePlugin.CODE, TinyMcePlugin.FULLSCREEN, TinyMcePlugin.TABLE)),
+            FULLSCREEN, CODE)),
 
-    ADVANCED(emptyList(), emptyList(), emptySet());
+    ADVANCED(emptyList(), emptyList());
 
     private final List<TinyMceMenu> menubar;
     private final List<TinyMceButton> toolbar;
-    private final Set<TinyMcePlugin> plugins;
 
-    TinyMceConfigMode(final List<TinyMceMenu> menubar, final List<TinyMceButton> toolbar, final Set<TinyMcePlugin> plugins) {
+    TinyMceConfigMode(final List<TinyMceMenu> menubar, final List<TinyMceButton> toolbar) {
         this.menubar = menubar;
         this.toolbar = toolbar;
-        this.plugins = plugins;
     }
 
     public List<TinyMceMenu> getMenubar() {
@@ -58,9 +59,5 @@ public enum TinyMceConfigMode {
 
     public List<TinyMceButton> getToolbar() {
         return toolbar;
-    }
-
-    public Set<TinyMcePlugin> getPlugins() {
-        return plugins;
     }
 }
