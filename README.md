@@ -49,7 +49,7 @@ We can configure the editor, based on predefined configuration modes, provide cu
 > [!NOTE]  
 > If no other configuration is specified, the _BASIC_ configuration mode is used.
 
-### Config Modes
+### Configuration Modes
 There are two configuration modes, BASIC and ADVANCED. Both modes have no menubar, but a single toolbar with buttons:
 
 **BASIC**
@@ -74,7 +74,7 @@ UNDO, REDO, CUT, COPY, PASTE, PASTE_TEXT, BOLD, ITALIC, UNDERLINE, SUBSCRIPT, SU
 
 ![](./docs/preview_advanced.png)
 
-### Custom Config
+### Custom Configuration
 
 We can provide our own configuration per editor. We can config the menubar and the toolbar(s), using the appropriate enums. In  the toolbar, we can use the pipe (|) character to group buttons, and the plus (+) character to add a new toolbar.
 
@@ -86,7 +86,7 @@ We can provide our own configuration per editor. We can config the menubar and t
 
 ![](./docs/preview_custom.png)
 
-### Combined Config
+### Combined Configuration
 
 We can combine any of the configuration modes with custom menubar and toolbar(s) configuration.
 
