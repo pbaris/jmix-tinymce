@@ -81,12 +81,12 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
             var toolbar = new ArrayList<>(configMode.getToolbar());
             viewToolbar.stream().filter(it -> !toolbar.contains(it)).forEach(toolbar::add);
             applyToolbarConfig(toolbar);
-            applyPluginsConfig(toolbar);
+            applyPluginsConfig(menubar, toolbar);
 
         } else {
             applyConfig(viewMenubar, "menubar", true);
             applyToolbarConfig(viewToolbar);
-            applyPluginsConfig(viewToolbar);
+            applyPluginsConfig(viewMenubar, viewToolbar);
         }
     }
 
@@ -127,11 +127,15 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
             .toArray(String[]::new));
     }
 
-    private void applyPluginsConfig(final List<TinyMceButton> toolbar) {
-        Set<TinyMcePlugin> plugins = toolbar.stream()
+    private void applyPluginsConfig(final List<TinyMceMenu> menubar, final List<TinyMceButton> toolbar) {
+        Set<TinyMcePlugin> plugins = menubar.stream()
+            .flatMap(m -> m.getPlugins().stream())
+            .collect(Collectors.toSet());
+
+        plugins.addAll(toolbar.stream()
             .map(TinyMceButton::getPlugin)
             .filter(Objects::nonNull)
-            .collect(Collectors.toSet());
+            .collect(Collectors.toSet()));
 
         applyConfig(plugins, "plugins", false);
     }

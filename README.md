@@ -44,13 +44,19 @@ or through code
 
 ## Configuration
 
+We can configure the editor, based on predefined configuration modes, provide custom configuration or combine the two.
+
+> [!NOTE]  
+> If no other configuration is specified, the _BASIC_ configuration mode is used.
+
 ### Config Modes
 There are two configuration modes, BASIC and ADVANCED. Both modes have no menubar, but a single toolbar with buttons:
 
 **BASIC**
 
 ```xml
-<nm:tinyMceEditor id="summaryField" property="summary" configMode="BASIC" />
+<nm:tinyMceEditor id="summaryField" property="summary" 
+                  configMode="BASIC" />
 ```
 
 BOLD, ITALIC, UNDERLINE, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, FORECOLOR, BACKCOLOR, NUMBERS_LIST, BULLETS_LIST, INDENT, OUTDENT, LINK, TABLE, FULLSCREEN, CODE
@@ -60,7 +66,8 @@ BOLD, ITALIC, UNDERLINE, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, F
 **ADVANCED**
 
 ```xml
-<nm:tinyMceEditor id="summaryField" property="summary" configMode="ADVANCED" />
+<nm:tinyMceEditor id="summaryField" property="summary" 
+                  configMode="ADVANCED" />
 ```
 
 UNDO, REDO, CUT, COPY, PASTE, PASTE_TEXT, BOLD, ITALIC, UNDERLINE, SUBSCRIPT, SUPERSCRIPT, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIGN_JUSTIFY, FORECOLOR, BACKCOLOR, NUMBERS_LIST, BULLETS_LIST, INDENT, OUTDENT, LINK, UNLINK, TABLE, MEDIA, HR, CHARACTER_MAP, VISUAL_BLOCKS, REMOVE_FORMAT, FULLSCREEN, CODE
@@ -81,10 +88,14 @@ We can provide our own configuration per editor. We can config the menubar and t
 
 ### Combined Config
 
-We can use any of the configuration modes and also add menubar and additional toolbar(s) buttons.
+We can combine any of the configuration modes with custom menubar and toolbar(s) configuration.
 
 ```xml
-<nm:tinyMceEditor id="summaryField" property="summary" configMode="BASIC" toolbar="UNLINK MEDIA"/>
+<nm:tinyMceEditor id="summaryField" property="summary" 
+                  configMode="BASIC" 
+                  toolbar="UNLINK MEDIA"/>
 ```
 
 ![](./docs/preview_combined.png)
+
+### Default 
