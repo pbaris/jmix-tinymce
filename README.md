@@ -22,7 +22,7 @@ implementation 'gr.netmechanics.jmix:jmix-tinymce-starter:1.0.0'
 
 ## How to use the add-on
 
-In an edit screen you can drag&drop the field from studio `Component Palette` window
+In an edit screen you can add the field from studio `Component Palette` window
 
 ![](./docs/palette.png)
 
