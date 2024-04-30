@@ -97,5 +97,3 @@ We can combine any of the configuration modes with custom menubar and toolbar(s)
 ```
 
 ![](./docs/preview_combined.png)
-
-### Default 
