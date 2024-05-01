@@ -6,6 +6,9 @@ This add-on provides support for [TinyMCE WYSIWYG Editor](https://www.tiny.cloud
 
 ![](./docs/preview.png)
 
+> [!NOTE]  
+> Only non-paid plugins are supported
+
 ## Installation
 
 The following table shows which version of the add-on is compatible with which version of the platform:
