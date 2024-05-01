@@ -55,7 +55,7 @@ We can configure the editor, based on predefined configuration modes, provide cu
 ### Configuration Modes
 There are two configuration modes, BASIC and ADVANCED. Both modes have no menubar, but a single toolbar with buttons:
 
-**BASIC**
+#### BASIC
 
 ```xml
 <nm:tinyMceEditor id="summaryField" property="summary" 
@@ -66,7 +66,7 @@ UNDO, REDO, BOLD, ITALIC, UNDERLINE, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, ALIG
 
 ![](./docs/preview_basic.png)
 
-**ADVANCED**
+#### ADVANCED
 
 ```xml
 <nm:tinyMceEditor id="summaryField" property="summary" 
