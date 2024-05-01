@@ -49,7 +49,7 @@ or through code
 
 We can configure the editor, based on predefined configuration modes, provide custom configuration or combine the two.
 
-> [!NOTE]  
+> [!TIP]  
 > If no other configuration is specified, the _BASIC_ configuration mode is used.
 
 ### Configuration Modes
