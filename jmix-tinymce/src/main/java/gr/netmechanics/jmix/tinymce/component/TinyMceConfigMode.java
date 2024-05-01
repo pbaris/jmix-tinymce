@@ -40,7 +40,6 @@ import java.util.List;
  * @author Panos Bariamis (pbaris)
  */
 
-//TODO github
 public enum TinyMceConfigMode {
     BASIC(emptyList(), List.of(
         UNDO, REDO, SEPARATOR,
