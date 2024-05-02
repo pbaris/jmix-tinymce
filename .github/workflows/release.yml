@@ -11,8 +11,8 @@ jobs:
         with:
           java-version: '17'
       - name: Publish package
-        run: gradle -Pversion=${{ github.event.release.tag_name }} clean build publish
+        run: ./gradlew -Pversion=${{ github.event.release.tag_name }} clean build publish
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
