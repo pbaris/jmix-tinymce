@@ -37,20 +37,25 @@ public class TinyMceEditor extends CustomField<String> implements SupportsValueS
 
     private TinyMceEditorDelegate<TinyMceEditor, String> fieldDelegate;
 
-    public TinyMce configure(final String configurationKey, final String value) {
-        return tinyMce.configure(configurationKey, value);
+    @SuppressWarnings("unused")
+    public TinyMceEditor configure(final String configurationKey, final String value) {
+        tinyMce.configure(configurationKey, value);
+        return this;
     }
 
-    public TinyMce configure(final String configurationKey, final String... value) {
-        return tinyMce.configure(configurationKey, value);
+    public TinyMceEditor configure(final String configurationKey, final String... value) {
+        tinyMce.configure(configurationKey, value);
+        return this;
     }
 
-    public TinyMce configure(final String configurationKey, final boolean value) {
-        return tinyMce.configure(configurationKey, value);
+    public TinyMceEditor configure(final String configurationKey, final boolean value) {
+        tinyMce.configure(configurationKey, value);
+        return this;
     }
 
-    public TinyMce configure(final String configurationKey, final double value) {
-        return tinyMce.configure(configurationKey, value);
+    public TinyMceEditor configure(final String configurationKey, final double value) {
+        tinyMce.configure(configurationKey, value);
+        return this;
     }
 
     @Override
