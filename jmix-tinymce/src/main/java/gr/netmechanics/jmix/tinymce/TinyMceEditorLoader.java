@@ -1,5 +1,8 @@
 package gr.netmechanics.jmix.tinymce;
 
+import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyConfig;
+import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyPluginsConfig;
+import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyToolbarConfig;
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_TOOLBAR;
 
 import java.util.ArrayList;
@@ -76,17 +79,17 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
         if (configMode != null) {
             var menubar = new ArrayList<>(configMode.getMenubar());
             viewMenubar.stream().filter(it -> !menubar.contains(it)).forEach(menubar::add);
-            applyConfig(menubar, "menubar", true);
+            applyConfig(resultComponent, menubar, "menubar", true);
 
             var toolbar = new ArrayList<>(configMode.getToolbar());
             viewToolbar.stream().filter(it -> !toolbar.contains(it)).forEach(toolbar::add);
-            applyToolbarConfig(toolbar);
-            applyPluginsConfig(menubar, toolbar);
+            applyToolbarConfig(resultComponent, toolbar);
+            applyPluginsConfig(resultComponent, menubar, toolbar);
 
         } else {
-            applyConfig(viewMenubar, "menubar", true);
-            applyToolbarConfig(viewToolbar);
-            applyPluginsConfig(viewMenubar, viewToolbar);
+            applyConfig(resultComponent, viewMenubar, "menubar", true);
+            applyToolbarConfig(resultComponent, viewToolbar);
+            applyPluginsConfig(resultComponent, viewMenubar, viewToolbar);
         }
     }
 
@@ -109,48 +112,6 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
                 })
                 .toList())
             .orElse(Collections.emptyList());
-    }
-
-    private void applyToolbarConfig(final List<TinyMceButton> toolbar) {
-        if (!toolbar.contains(NEW_TOOLBAR)) {
-            applyConfig(toolbar, "toolbar", true);
-            return;
-        }
-
-        String[] toolbars = toolbar.stream()
-            .map(TinyMceEnum::getJsName)
-            .collect(Collectors.joining(" ")).split("\\++");
-
-        resultComponent.configure("toolbar", Arrays.stream(toolbars)
-            .filter(tb -> !Strings.isNullOrEmpty(tb))
-            .map(String::trim)
-            .toArray(String[]::new));
-    }
-
-    private void applyPluginsConfig(final List<TinyMceMenu> menubar, final List<TinyMceButton> toolbar) {
-        Set<TinyMcePlugin> plugins = menubar.stream()
-            .flatMap(m -> m.getPlugins().stream())
-            .collect(Collectors.toSet());
-
-        plugins.addAll(toolbar.stream()
-            .map(TinyMceButton::getPlugin)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toSet()));
-
-        applyConfig(plugins, "plugins", false);
-    }
-
-    private <E extends TinyMceEnum> void applyConfig(final Collection<E> configs, final String attribute, final boolean supportsDisable) {
-        final String config = configs.stream()
-            .map(TinyMceEnum::getJsName)
-            .collect(Collectors.joining(" "));
-
-        if (StringUtils.isNotBlank(config)) {
-            resultComponent.configure(attribute, config);
-
-        } else if (supportsDisable) {
-            resultComponent.configure(attribute, false);
-        }
     }
 
     private List<String> split(String names) {

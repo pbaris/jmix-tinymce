@@ -19,6 +19,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.vaadin.tinymce.TinyMce;
+import org.vaadin.tinymce.ValueChangeMode;
 
 /**
  * @author Panos Bariamis (pbaris)
@@ -37,7 +38,6 @@ public class TinyMceEditor extends CustomField<String> implements SupportsValueS
 
     private TinyMceEditorDelegate<TinyMceEditor, String> fieldDelegate;
 
-    @SuppressWarnings("unused")
     public TinyMceEditor configure(final String configurationKey, final String value) {
         tinyMce.configure(configurationKey, value);
         return this;
@@ -56,6 +56,14 @@ public class TinyMceEditor extends CustomField<String> implements SupportsValueS
     public TinyMceEditor configure(final String configurationKey, final double value) {
         tinyMce.configure(configurationKey, value);
         return this;
+    }
+
+    public void setValueChangeMode(final ValueChangeMode mode) {
+        tinyMce.setValueChangeMode(mode);
+    }
+
+    public void setDebounceTimeout(final int debounceTimeout) {
+        tinyMce.setDebounceTimeout(debounceTimeout);
     }
 
     @Override
