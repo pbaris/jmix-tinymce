@@ -2,8 +2,10 @@ package gr.netmechanics.jmix.tinymce;
 
 import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_TOOLBAR;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
 import gr.netmechanics.jmix.tinymce.component.TinyMceButton;
+import gr.netmechanics.jmix.tinymce.component.TinyMceConfigMode;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEnum;
 import gr.netmechanics.jmix.tinymce.component.TinyMceMenu;
@@ -22,6 +25,12 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class TinyMceConfigUtil {
     private TinyMceConfigUtil() {}
+
+    public static void applyConfig(final TinyMceEditor editor, final TinyMceConfigMode configMode) {
+        var toolbar = new ArrayList<>(configMode.getToolbar());
+        applyToolbarConfig(editor, toolbar);
+        applyPluginsConfig(editor, Collections.emptyList(), toolbar);
+    }
 
     public static void applyToolbarConfig(final TinyMceEditor editor, final List<TinyMceButton> toolbar) {
         if (!toolbar.contains(NEW_TOOLBAR)) {
