@@ -17,12 +17,12 @@ The following table shows which version of the add-on is compatible with which v
 |--------------|----------------|-------------------------------------------------|
 | 2.2.x        | 1.0.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.0.0 |
 | 2.3.2        | 1.1.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.1.0 |
-| 2.3.4        | 1.2.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.2.0 |
+| 2.3.4        | 1.3.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.3.0 |
 
 Add to your project's `build.gradle` dependencies:
 
 ```gradle
-implementation 'gr.netmechanics.jmix:jmix-tinymce-starter:1.2.0'
+implementation 'gr.netmechanics.jmix:jmix-tinymce-starter:1.3.0'
 ```
 
 ## How to use the add-on
