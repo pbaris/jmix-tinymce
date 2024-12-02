@@ -1,3 +1,7 @@
+## [1.4.0] - 2024-12-01
+
+- TinyMCE Editor for Jmix 2.4.1
+
 ## [1.3.0] - 2024-10-17
 
 - Add `applyConfig(final TinyMceEditor editor, final TinyMceConfigMode configMode)` to TinyMceConfigUtil class

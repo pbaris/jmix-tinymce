@@ -13,6 +13,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
+configurations.implementation {
+    exclude group: 'com.vaadin', module: 'hilla'
+    exclude group: 'com.vaadin', module: 'hilla-dev'
+}
+
 test {
     useJUnitPlatform()
 }
