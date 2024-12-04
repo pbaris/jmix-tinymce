@@ -1,3 +1,7 @@
+## [1.4.1] - 2024-12-04
+
+- #1 Upgrade to latest vaadin addon version
+
 ## [1.4.0] - 2024-12-01
 
 - TinyMCE Editor for Jmix 2.4.1
