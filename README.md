@@ -35,7 +35,7 @@ In an edit screen you can add the field from studio `Component Palette` window
 or through code
 
 ```xml
-<window xmlns="http://jmix.io/schema/ui/window"
+<view xmlns="http://jmix.io/schema/flowui/view"
         xmlns:nm="http://schemas.netmechanics.gr/jmix/ui"
         focusComponent="form">
     ...
@@ -45,7 +45,7 @@ or through code
         </formLayout>
         ...
     </layout>
-</window>
+</view>
 ```
 
 ## Configuration
