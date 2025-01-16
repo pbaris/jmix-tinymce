@@ -1,3 +1,9 @@
+## [1.4.2] - 2025-01-16
+
+- TinyMCE Editor for Jmix 2.4.2
+- Upgrade to latest vaadin addon version
+- Add gr.netmechanics.jmix.tinymce.component.TinyMceEditor.setConfig delegate method
+
 ## [1.4.1] - 2024-12-04
 
 - #1 Upgrade to latest vaadin addon version

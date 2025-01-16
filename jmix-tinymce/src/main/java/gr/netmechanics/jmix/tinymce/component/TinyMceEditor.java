@@ -66,6 +66,10 @@ public class TinyMceEditor extends CustomField<String> implements SupportsValueS
         tinyMce.setDebounceTimeout(debounceTimeout);
     }
 
+    public void setConfig(final String jsonConfig) {
+        tinyMce.setConfig(jsonConfig);
+    }
+
     @Override
     public void setReadOnly(final boolean readOnly) {
         tinyMce.setReadOnly(readOnly);
