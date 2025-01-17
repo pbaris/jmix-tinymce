@@ -44,7 +44,7 @@ subprojects {
 
     publishing {
         repositories {
-            if (devProfile) {
+            if (project.hasProperty("nexus_username")) {
                 maven {
                     name = "NetmechanicsNexus"
                     url = 'https://nexus.nmlabs.gr/repository/nmplatform/'
