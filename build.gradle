@@ -44,6 +44,14 @@ subprojects {
 
     publishing {
         repositories {
+//            maven {
+//                name = "NetmechanicsNexus"
+//                url = 'https://nexus.nmlabs.gr/repository/nmplatform/'
+//                credentials {
+//                    username = "${nexus_username}"
+//                    password = "${nexus_password}"
+//                }
+//            }
             maven {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY"))
