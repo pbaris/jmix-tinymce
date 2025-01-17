@@ -1,4 +1,4 @@
-## [1.4.3] - 2025-01-17
+## [1.4.4] - 2025-01-17
 
 - Upgrade to latest vaadin addon version
 
