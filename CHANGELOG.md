@@ -1,3 +1,7 @@
+## [1.5.0] - 2025-02-14
+
+- Compatibility with Jmix 2.5
+
 ## [1.4.4] - 2025-01-17
 
 - Upgrade to latest vaadin addon version
