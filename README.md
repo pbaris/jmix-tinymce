@@ -21,6 +21,7 @@ The following table shows which version of the add-on is compatible with which v
 | 2.4.1        | 1.4.1          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.1 |
 | 2.4.2        | 1.4.4          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.4 |
 | 2.5.x        | 1.5.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.5.0 |
+| 2.6.x        | 1.6.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.6.0 |
 
 For manual installation, add the following dependencies to your `build.gradle`:
 
