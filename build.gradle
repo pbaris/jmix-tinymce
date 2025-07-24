@@ -47,7 +47,7 @@ subprojects {
             if (project.hasProperty("nexus_username")) {
                 maven {
                     name = "NetmechanicsNexus"
-                    url = 'https://nexus.nmlabs.gr/repository/nmplatform/'
+                    url = 'https://nexus.nmlabs.gr/repository/m2public/'
                     credentials {
                         username = "${nexus_username}"
                         password = "${nexus_password}"
