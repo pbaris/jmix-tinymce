@@ -103,7 +103,6 @@ public enum TinyMceButton implements TinyMceEnum {
     TABLE_CELL_BORDER_COLOR("tablecellbordercolor", TinyMcePlugin.TABLE),
     TABLE_ROW_HEADER("tablerowheader", TinyMcePlugin.TABLE),
     TABLE_COL_HEADER("tablecolheader", TinyMcePlugin.TABLE),
-    TEMPLATE("template", TinyMcePlugin.TEMPLATE),
     UNDERLINE("underline", null),
     UNDO("undo", null),
     UNLINK("unlink", TinyMcePlugin.LINK),

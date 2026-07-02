@@ -13,17 +13,18 @@ This add-on provides support for [TinyMCE WYSIWYG Editor](https://www.tiny.cloud
 
 The following table shows which version of the add-on is compatible with which version of the platform:
 
-| Jmix Version | Add-on Version | Implementation                                  |
-|--------------|----------------|-------------------------------------------------|
-| 2.2.x        | 1.0.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.0.0 |
-| 2.3.2        | 1.1.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.1.0 |
-| 2.3.4        | 1.3.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.3.0 |
-| 2.4.1        | 1.4.1          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.1 |
-| 2.4.2        | 1.4.4          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.4 |
-| 2.5.x        | 1.5.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.5.0 |
-| 2.6.x        | 1.6.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.6.0 |
-| 2.7.x        | 1.7.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.7.0 |
-| 2.8.x        | 1.8.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.8.0 |
+| Jmix Version | Add-on Version | Implementation                                  | Notes                                                               |
+|--------------|----------------|-------------------------------------------------|---------------------------------------------------------------------|
+| 2.2.x        | 1.0.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.0.0 |                                                                     |
+| 2.3.2        | 1.1.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.1.0 |                                                                     |
+| 2.3.4        | 1.3.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.3.0 |                                                                     |
+| 2.4.1        | 1.4.1          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.1 |                                                                     |
+| 2.4.2        | 1.4.4          | gr.netmechanics.jmix:jmix-tinymce-starter:1.4.4 |                                                                     |
+| 2.5.x        | 1.5.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.5.0 |                                                                     |
+| 2.6.x        | 1.6.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.6.0 |                                                                     |
+| 2.7.x        | 1.7.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.7.0 |                                                                     |
+| 2.8.x        | 1.8.0          | gr.netmechanics.jmix:jmix-tinymce-starter:1.8.0 |                                                                     |
+| 3.0.x        | 3.0.0          | gr.netmechanics.jmix:jmix-tinymce-starter:3.0.0 | The Vaadin add-on uses TinyMCE 7, whose licensing model has changed |
 
 For manual installation, add the following dependencies to your `build.gradle`:
 
@@ -108,3 +109,28 @@ We can combine any of the configuration modes with custom menubar and toolbar(s)
 ```
 
 ![](./docs/preview_combined.png)
+
+## Version 3.0.x
+
+### Security Configuration
+
+Starting with 3.0.x, you must configure a custom security rule to allow access to the TinyMCE static resources.
+
+```java
+@Configuration
+public class SimplePublicSecurityConfiguration {
+
+    @Bean
+    @Order(JmixSecurityFilterChainOrder.CUSTOM)
+    SecurityFilterChain publicFilterChain(HttpSecurity http) throws Exception {
+        http.securityMatcher("/frontend/tinymce*/**")
+                .authorizeHttpRequests(authorize -> 
+                    authorize.anyRequest().permitAll());
+        return http.build();
+    }
+}
+```
+
+### Theme Limitations
+
+The Vaadin add-on does not currently provide styles for the Aura theme.

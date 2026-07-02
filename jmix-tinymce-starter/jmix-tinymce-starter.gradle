@@ -1,4 +1,6 @@
-archivesBaseName = 'jmix-tinymce-starter'
+base {
+    archivesName = 'jmix-tinymce-starter'
+}
 
 jmix {
     entitiesEnhancing {

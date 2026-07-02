@@ -15,7 +15,6 @@ import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.NON_BREAKING;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.PAGE_BREAK;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.PREVIEW;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.SEARCH_REPLACE;
-import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.TEMPLATE;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.VISUAL_BLOCKS;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.VISUAL_CHARACTERS;
 import static gr.netmechanics.jmix.tinymce.component.TinyMcePlugin.WORD_COUNT;
@@ -29,7 +28,7 @@ public enum TinyMceMenu implements TinyMceEnum {
     FILE("file", Set.of(AUTOSAVE, PREVIEW)),
     EDIT("edit", Set.of(SEARCH_REPLACE)),
     VIEW("view", Set.of(CODE, VISUAL_BLOCKS, VISUAL_CHARACTERS, PREVIEW, FULLSCREEN)),
-    INSERT("insert", Set.of(IMAGE, LINK, MEDIA, TEMPLATE, CODE_SAMPLE, TinyMcePlugin.TABLE,
+    INSERT("insert", Set.of(IMAGE, LINK, MEDIA, CODE_SAMPLE, TinyMcePlugin.TABLE,
         CHARACTER_MAP, EMOTICONS, PAGE_BREAK, NON_BREAKING, ANCHOR, INSERT_DATETIME)),
     FORMAT("format", Set.of(VISUAL_BLOCKS)),
     TOOLS("tools", Set.of(CODE, WORD_COUNT)),

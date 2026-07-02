@@ -3,16 +3,11 @@ package gr.netmechanics.jmix.tinymce;
 import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyConfig;
 import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyPluginsConfig;
 import static gr.netmechanics.jmix.tinymce.TinyMceConfigUtil.applyToolbarConfig;
-import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.NEW_TOOLBAR;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
 import gr.netmechanics.jmix.tinymce.component.TinyMceButton;
@@ -20,11 +15,8 @@ import gr.netmechanics.jmix.tinymce.component.TinyMceConfigMode;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEditor;
 import gr.netmechanics.jmix.tinymce.component.TinyMceEnum;
 import gr.netmechanics.jmix.tinymce.component.TinyMceMenu;
-import gr.netmechanics.jmix.tinymce.component.TinyMcePlugin;
 import io.jmix.flowui.xml.layout.loader.AbstractComponentLoader;
 import io.jmix.flowui.xml.layout.support.DataLoaderSupport;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.lang.NonNull;
 
 /**
  * @author Panos Bariamis (pbaris)
@@ -34,7 +26,6 @@ public class TinyMceEditorLoader extends AbstractComponentLoader<TinyMceEditor> 
     protected DataLoaderSupport dataLoaderSupport;
 
     @Override
-    @NonNull
     protected TinyMceEditor createComponent() {
         return factory.create(TinyMceEditor.class);
     }

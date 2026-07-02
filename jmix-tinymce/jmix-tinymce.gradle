@@ -1,11 +1,13 @@
-archivesBaseName = 'jmix-tinymce'
+base {
+    archivesName = 'jmix-tinymce'
+}
 
 dependencies {
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.flowui:jmix-flowui-starter'
     implementation 'io.jmix.flowui:jmix-flowui-themes'
 
-    implementation 'org.parttio:tinymce-for-flow:4.2.7'
+    implementation 'org.parttio:tinymce-for-flow:5.0.0'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -16,6 +18,7 @@ dependencies {
 configurations.implementation {
     exclude group: 'com.vaadin', module: 'hilla'
     exclude group: 'com.vaadin', module: 'hilla-dev'
+    exclude group: 'com.vaadin', module: 'copilot'
 }
 
 test {

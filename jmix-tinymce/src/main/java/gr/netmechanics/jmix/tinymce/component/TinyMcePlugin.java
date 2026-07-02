@@ -1,16 +1,10 @@
 package gr.netmechanics.jmix.tinymce.component;
 
-import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ACCORDION_REMOVE;
-import static gr.netmechanics.jmix.tinymce.component.TinyMceButton.ACCORDION_TOGGLE;
-
-import java.util.Set;
-
 /**
  * @author Panos Bariamis (pbaris)
  */
 public enum TinyMcePlugin implements TinyMceEnum {
     ACCORDION("accordion"),
-    ADVANCED_LIST("advlist"),
     ANCHOR("anchor"),
     AUTOLINK("autolink"),
     AUTORESIZE("autoresize"),
@@ -35,7 +29,6 @@ public enum TinyMcePlugin implements TinyMceEnum {
     SAVE("save"),
     SEARCH_REPLACE("searchreplace"),
     TABLE("table"),
-    TEMPLATE("template"),
     VISUAL_BLOCKS("visualblocks"),
     VISUAL_CHARACTERS("visualchars"),
     WORD_COUNT("wordcount");

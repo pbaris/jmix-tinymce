@@ -1,3 +1,8 @@
+## [3.0.0] - 2026-07-02
+
+- Compatibility with Jmix 3.0
+- Upgrade to latest vaadin addon version (5.0.0). The Vaadin add-on uses TinyMCE 7, whose licensing model has changed
+
 ## [1.8.0] - 2025-04-11
 
 - Compatibility with Jmix 2.8
