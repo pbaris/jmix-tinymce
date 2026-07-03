@@ -134,3 +134,5 @@ public class SimplePublicSecurityConfiguration {
 ### Theme Limitations
 
 The Vaadin add-on does not currently provide styles for the Aura theme.
+
+[Add support for Aura theme](https://github.com/parttio/tinymce-for-flow/pull/46)
